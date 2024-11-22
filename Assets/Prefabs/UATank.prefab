@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 8939011322037788824}
   - component: {fileID: -7865537907141842604}
   - component: {fileID: 380673401350317974}
+  - component: {fileID: -3389283829754999256}
   m_Layer: 0
   m_Name: UATank
   m_TagString: Untagged
@@ -172,6 +173,7 @@ MonoBehaviour:
   fireForce: 1000
   damageDone: 10
   shellLifespan: 3
+  fireRate: 0
 --- !u!114 &8939011322037788824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +213,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   maxHealth: 100
+--- !u!114 &-3389283829754999256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939011322037788835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074bdda35c6ff6b4380487cad788e970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
