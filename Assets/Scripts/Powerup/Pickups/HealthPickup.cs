@@ -18,6 +18,8 @@ public class HealthPickup : MonoBehaviour
     {
         
     }
+
+    // public method for on trigger to call the powerup manager and destroy the current power up in the map
     public void OnTriggerEnter(Collider other)
     {
         PowerupManager powerupManager = other.GetComponent<PowerupManager>();

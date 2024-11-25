@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class PowerupManager : MonoBehaviour
 {
+    // listing active powerups
     public List<Powerup> powerups;
+
+    // list acting as powerup removal queue
     private List<Powerup> removedPowerupQueue;
     // Start is called before the first frame update
     void Start()
     {
+        // starting the list of powerups
         powerups = new List<Powerup> ();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // decreasing time on all current powerups
         DecrementPowerupTimers();
     }
 
     private void LateUpdate()
     {
+        // calling function to remove queued powerups
         ApplyRemovePowerupsQueue();
     }
 
+    // Adds a new powerup to the list and applies its effects
     public void Add (Powerup powerupToAdd)
     {
         powerupToAdd.Apply(this);
@@ -30,6 +37,7 @@ public class PowerupManager : MonoBehaviour
         powerups.Add(powerupToAdd);
     }
 
+    // function to add powerup to poweruptoremovequeue 
     public void Remove(Powerup powerupToRemove)
     {
         powerupToRemove.Remove(this);
@@ -37,6 +45,7 @@ public class PowerupManager : MonoBehaviour
         removedPowerupQueue.Add(powerupToRemove);
     }
 
+    // fucntion for decrementing timers on powerups
     public void DecrementPowerupTimers()
     {
         foreach (Powerup powerup in powerups)
@@ -53,6 +62,7 @@ public class PowerupManager : MonoBehaviour
         }
     }
 
+    // fuction for deleating objects in the removepowerupqueue
     private void ApplyRemovePowerupsQueue()
     {
         foreach (Powerup powerup in removedPowerupQueue)
