@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: -3389283829754999256}
   - component: {fileID: -5363868760033104266}
   m_Layer: 0
-  m_Name: UATank
+  m_Name: SlowTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: -4872552678638238010, guid: 1e104a316163c6f46b97e3b322270e62, type: 3}
   - {fileID: -8074505167046961010, guid: 1e104a316163c6f46b97e3b322270e62, type: 3}
-  - {fileID: -3228131962952574658, guid: 1e104a316163c6f46b97e3b322270e62, type: 3}
+  - {fileID: 2100000, guid: 44a36e84b25c3354d9d915a88f06ccc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

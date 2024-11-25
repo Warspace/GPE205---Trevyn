@@ -24,7 +24,6 @@ public class TankPawn : Pawn
         Debug.Log("Moving Backward");
         mover.Move(transform.forward, -moveSpeed);
 
-        noiseMaker.volumeDistance = movingVolumeDistance;
     }
 
     public override void MoveForward() 
@@ -32,7 +31,6 @@ public class TankPawn : Pawn
         Debug.Log("Moving Forward");
         mover.Move(transform.forward, moveSpeed);
 
-        noiseMaker.volumeDistance = movingVolumeDistance;
     }
 
     public override void RotateClockwise() 

@@ -15,10 +15,14 @@ public class AiController : Controller
 
     public float hearingDistance;
 
+    public float fieldOfView;
+
+    public Transform agent;
+
     // Start is called before the first frame update
     public override void Start()
     {
-        currentState = AIState.Chase;
+        ChangeState(currentState);
 
         base.Start();
     }
@@ -41,6 +45,11 @@ public class AiController : Controller
 
                 Debug.Log("Do Guard");
 
+                if (CanSee(target))
+                {
+                    ChangeState(AIState.Chase);
+                }
+
                 if (CanHear(target))
                 {
                     ChangeState(AIState.Chase);
@@ -58,7 +67,12 @@ public class AiController : Controller
 
                 Debug.Log("Do Chase");
 
-                DoSeekState();
+                DoChaseState();
+
+                if (!CanSee(target))
+                {
+                    ChangeState(AIState.Guard);
+                }
 
                 if (!CanHear(target))
                 {
@@ -84,6 +98,12 @@ public class AiController : Controller
     {
 
     }
+
+    protected void DoChaseState()
+    {
+        Seek(target);
+    }
+
     protected void DoAttackState()
     {
         Seek(target.transform);
@@ -150,6 +170,41 @@ public class AiController : Controller
         else
         {
             return false;
+        }
+    }
+    public bool CanSee(GameObject target)
+    {
+        Vector3 agentToTargetVector = target.transform.position - pawn.transform.position;
+
+        float angleToTarget = Vector3.Angle(agentToTargetVector, pawn.transform.forward);
+        
+        if (angleToTarget < fieldOfView)
+        {
+
+            RaycastHit hit;
+            Debug.DrawRay(pawn.transform.position, agentToTargetVector, Color.green);
+
+            if (Physics.Raycast(pawn.transform.position + Vector3.up/2.0f, agentToTargetVector, out hit))
+            {
+                if(hit.collider.gameObject == target)
+                {
+                    return true;
+                }
+                else 
+                { 
+                    return false; 
+                }
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        else
+        {
+            return false;
+
         }
     }
 }
